@@ -49,10 +49,12 @@ def parse_pubmed_results(fetch_results):
             'Abstract': record.get('AB', 'N/A'),
             'Authors': ', '.join(record.get('AU', [])),
             'Publication Type': ', '.join(record.get('PT', ['N/A'])),
+            'Source Title': record.get('JT', 'N/A'),
             'Publication Year': record.get('DP', 'N/A').split()[0] if 'DP' in record else 'N/A',
+            'Keywords': ', '.join(record.get('OT', [])),
             'PMID': record.get('PMID', 'N/A'),
-            'URL': f"https://pubmed.ncbi.nlm.nih.gov/{record.get('PMID', 'N/A')}",
-            'DOI': record.get('LID', 'N/A').split()[0] if 'LID' in record else 'N/A'
+            'DOI': record.get('LID', 'N/A').split()[0] if 'LID' in record else 'N/A',
+            'URL': f"https://pubmed.ncbi.nlm.nih.gov/{record.get('PMID', 'N/A')}"
         })
     
     return results
@@ -69,7 +71,10 @@ def export_to_csv(results, filename):
             writer.writerow(result)
 
 if __name__ == "__main__":
-    query = "(((Ubiquitous OR Pervasive OR mobile OR Smart OR Digital OR Environmental) AND (Sensing OR Sensor) AND (health OR well-being*) AND (Indoor)))"
+    query = os.getenv("PUBMED_QUERY")
+
+    if query is None:
+        query = input("Enter your query: ")
     
     start_date = input("Enter the start date (YYYY/MM/DD) or press Enter to skip: ")
     end_date = input("Enter the end date (YYYY/MM/DD) or press Enter to skip: ")
@@ -78,6 +83,7 @@ if __name__ == "__main__":
     end_date = end_date if end_date else None
 
     fetch_results = search_pubmed(query, start_date, end_date)
+    # print(fetch_results)
 
     if not fetch_results:
         print("No results found.")

@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def fetch_wos_data(start_date, end_date, query='TS=(machine learning) AND DT=(Article)', count=100, first_record=1, output_file='lit_wos.csv'):
+def fetch_wos_data(start_date, end_date, query, count=100, first_record=1, output_file='lit_wos.csv'):
     """
     Fetch data from the World of Science database and export it to a CSV file.
     
@@ -110,12 +110,13 @@ def export_to_csv(data, db, start_date, end_date, output_file):
 
 if __name__ == "__main__":
     query = os.getenv('WOS_QUERY')
-    
-    start_date = input("Enter the start date (YYYY-MM-DD) or press Enter to skip: ")
-    end_date = input("Enter the end date (YYYY-MM-DD) or press Enter to skip: ")
 
     if query is None:
         query = input("Enter your WOS query: ")
+
+
+    start_date = input("Enter the start date (YYYY-MM-DD) or press Enter to skip: ")
+    end_date = input("Enter the end date (YYYY-MM-DD) or press Enter to skip: ")
     
     start_date = start_date if start_date else None
     end_date = end_date if end_date else None

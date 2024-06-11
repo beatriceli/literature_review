@@ -11,6 +11,7 @@ def parse_bib_entry(entry):
         'author': fields.get('author', ''),
         'SourceTitle': fields.get('journal', fields.get('booktitle', '')), # journal or booktitle
         'year': fields.get('year', ''),
+        'keywords': fields.get('keywords', ''),
         'doi': fields.get('doi', '')
     }
 
@@ -29,7 +30,7 @@ def export_to_csv(bib_file, output_file):
     # Write to CSV
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerow(['Title', 'Abstract', 'Author', 'SourceTitle', 'Year', 'DOI'])
+        writer.writerow(['Title', 'Abstract', 'Author', 'SourceTitle', 'Publication Year', 'Keywords','DOI'])
         for entry in data:
             writer.writerow([
                 entry['title'],
@@ -37,6 +38,7 @@ def export_to_csv(bib_file, output_file):
                 entry['author'],
                 entry['SourceTitle'],
                 entry['year'],
+                entry['keywords'],
                 entry['doi']
             ])
 
