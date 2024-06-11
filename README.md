@@ -14,10 +14,10 @@ This script queries the Web of Science (WoS) database and retrieves research art
 An api key is needed for access but a free version is available for application, found here: https://developer.clarivate.com/apis/wos-starter.
 The specific database within Web of Science can be indicated, i.e. 'WOS': Web of Science Core Collection, 'WOK': represents all databases.
 
-Usage
-'''sh
+#### Usage:
+```sh
 python wos.py
-'''
+```
 
 #### Parameters:
 * 'query': The search query string.
@@ -27,10 +27,10 @@ python wos.py
 * 'first_record': Specific record, if any, within the result set to return. Cannot be less than 1 and greater than 100000.
 
 ##### Example
-'''sh
+```sh
 Enter the start date (YYYY-MM-DD) or press Enter to skip: 2021-01-01
 Enter the end date (YYYY-MM-DD) or press Enter to skip: 2021-06-30
-'''
+```
 
 The results will be exported to a CSV file named lit_{Database}_{start_date}_{end_date}.csv in a literature directory.
 
@@ -44,9 +44,9 @@ The results will be exported to a CSV file named lit_{Database}_{start_date}_{en
 This script queries the PubMed database and retrieves research articles based on a provided search query and a date range.
 
 Usage
-'''sh
+```sh
 python pubmed.py
-'''
+```
 
 The results will be exported to a CSV file named lit_pubmed_{start_date}_{end_date}.csv in a literature directory.
 
