@@ -1,6 +1,9 @@
 import csv
 import os
 from Bio import Entrez, Medline
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def search_pubmed(query, start_date=None, end_date=None):
     # Provide your email to NCBI Entrez
@@ -61,7 +64,7 @@ def parse_pubmed_results(fetch_results):
 
 def export_to_csv(results, filename):
     # Define the CSV headers
-    headers = ['Title', 'Abstract', 'Authors', 'Publication Type', 'Publication Year', 'PMID', 'URL', 'DOI']
+    headers = ['Title', 'Abstract', 'Authors', 'Publication Type', 'Source Title', 'Publication Year', 'Keywords', 'PMID', 'URL', 'DOI']
 
     # Write the results to a CSV file
     with open(filename, mode='w', newline='', encoding='utf-8') as file:

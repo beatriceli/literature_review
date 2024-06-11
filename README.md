@@ -8,8 +8,7 @@ This project provides Python scripts to automate the retrieval of research artic
 - `bibparser.py`: For parsing bibliographic data from ACM Digital Library exports.
 
 
-## Scripts
-### wos.py
+## wos.py
 This script queries the Web of Science (WoS) database and retrieves research articles based on a provided search query and optional date range.
 An api key is needed for access but a free version is available for application, found here: https://developer.clarivate.com/apis/wos-starter.
 The specific database within Web of Science can be indicated, i.e. 'WOS': Web of Science Core Collection, 'WOK': represents all databases.
@@ -26,7 +25,7 @@ python wos.py
 * 'count': The number of results to fetch (optional, default and maximum is 100).
 * 'first_record': Specific record, if any, within the result set to return. Cannot be less than 1 and greater than 100000.
 
-##### Example
+#### Example
 ```sh
 Enter the start date (YYYY-MM-DD) or press Enter to skip: 2021-01-01
 Enter the end date (YYYY-MM-DD) or press Enter to skip: 2021-06-30
@@ -40,7 +39,7 @@ The results will be exported to a CSV file named lit_{Database}_{start_date}_{en
 - [Advanced Examples](https://images.webofknowledge.com//WOKRS529AR7/help/WOS/hp_advanced_examples.html)
 
 
-### pubmed.py
+## pubmed.py
 This script queries the PubMed database and retrieves research articles based on a provided search query and a date range.
 
 Usage
@@ -50,7 +49,7 @@ python pubmed.py
 
 The results will be exported to a CSV file named lit_pubmed_{start_date}_{end_date}.csv in a literature directory.
 
-### bibparser.py
+## bibparser.py
 This script parses bibliographic data from ACM Digital Library exports. ACM does not have any official API and it is difficult to access otherwise. You can conduct the search on the official website and select all to export all results, which has a maximum of 1000. If results exceed 1000, it is best to break the exports into parts. 
 
 You can use [bibtex-tools](https://pypi.org/project/bibtextools/#:~:text=isbn%20literature.bib-,Combining%20Bib%20Files,occur%20after%20merging%20the%20files) to combine multiple bib files into one. 
