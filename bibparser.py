@@ -16,7 +16,7 @@ output_file = ('lit_' + bibfile).replace('.bib', '.csv')
 
 with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(['Title', 'Abstract', 'Author', 'Publication Type', 'SourceTitle', 'Publication Year', 'Keywords','DOI'])
+    writer.writerow(['Title', 'Abstract', 'Authors', 'Publication Type', 'SourceTitle', 'Publication Year', 'Keywords','DOI'])
     for entry in library.entries:
         writer.writerow([
             entry['title'],

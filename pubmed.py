@@ -52,7 +52,7 @@ def parse_pubmed_results(fetch_results):
             'Abstract': record.get('AB', 'N/A'),
             'Authors': ', '.join(record.get('AU', [])),
             'Publication Type': ', '.join(record.get('PT', ['N/A'])),
-            'Source Title': record.get('JT', 'N/A'),
+            'SourceTitle': record.get('JT', 'N/A'),
             'Publication Year': record.get('DP', 'N/A').split()[0] if 'DP' in record else 'N/A',
             'Keywords': ', '.join(record.get('OT', [])),
             'PMID': record.get('PMID', 'N/A'),
@@ -64,7 +64,7 @@ def parse_pubmed_results(fetch_results):
 
 def export_to_csv(results, filename):
     # Define the CSV headers
-    headers = ['Title', 'Abstract', 'Authors', 'Publication Type', 'Source Title', 'Publication Year', 'Keywords', 'PMID', 'URL', 'DOI']
+    headers = ['Title', 'Abstract', 'Authors', 'Publication Type', 'SourceTitle', 'Publication Year', 'Keywords', 'PMID', 'URL', 'DOI']
 
     # Write the results to a CSV file
     with open(filename, mode='w', newline='', encoding='utf-8') as file:
